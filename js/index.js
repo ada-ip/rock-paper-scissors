@@ -39,3 +39,29 @@ function checkSelection(selection) {
 function isEmpty(string) {
     return string.length === 0;
 }
+
+// This function allows the player to play one round of the game against the computer
+function playRound(playerSelection, computerSelection) {
+    let roundOutcome;
+    // It is checked if the player has introduced a valid option
+    if(checkSelection(playerSelection)){
+        // The player's selection is capitalized so it can be compared to the computer's selection because the player's selections needs to be case insensitive
+        let playerSelectionCapitalized = capitalizeSelection(playerSelection);
+        
+        // It is checked if the player has won, tied or lost against the computer
+        if(playerSelectionCapitalized === computerSelection){
+            roundOutcome = `It's a tie! You both have chosen ${computerSelection}`;
+        }
+        else if (playerSelectionCapitalized === "Rock" && computerSelection === "Scissors" || playerSelectionCapitalized === "Paper" && computerSelection === "Rock" || 
+        playerSelectionCapitalized === "Scissors" && computerSelection === "Paper") {
+            roundOutcome = `You win! ${playerSelectionCapitalized} beats ${computerSelection}`;
+        }
+        else {
+            roundOutcome = `You lose! ${computerSelection} beats ${playerSelectionCapitalized}`;
+        }
+    }
+    else {
+        roundOutcome = "Invalid selection";
+    }
+    return roundOutcome;
+}
