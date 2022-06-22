@@ -26,7 +26,7 @@ function capitalizeSelection(selection) {
 function checkSelection(selection) {
     let validSelection = false;
     // If the string introduced by the player is not empty it is compared to all the valid options
-    if(!isEmpty(selection)) {
+    if(!isNullOrEmpty(selection)) {
         let selectionCapitalized = capitalizeSelection(selection);
         if(selectionCapitalized === "Rock" || selectionCapitalized === "Paper" || selectionCapitalized === "Scissors"){
             validSelection = true;
@@ -36,8 +36,8 @@ function checkSelection(selection) {
 }
 
 // This function checks if a string is an empty string
-function isEmpty(string) {
-    return string.length === 0;
+function isNullOrEmpty(string) {
+    return string == null || string.length == 0;
 }
 
 // This function allows the player to play one round of the game against the computer
