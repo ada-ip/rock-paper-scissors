@@ -76,3 +76,39 @@ function printWinner(playerScore, computerScore) {
         console.log(`The score is... ${playerScore} to ${computerScore}! It's a tie!`);
     }
 }
+
+// This functions allows the player to play five rounds of Rock, Paper, Scissors against the computer
+function game(){
+    // Player and computer points
+    let playerScore = 0;
+    let computerScore = 0;
+
+    // The game lasts five rounds
+    for(i = 0; i < 5; i++) {
+        let playerSelection = prompt("What do you want to play? (Rock, paper, scissors):");
+
+        // It is checked if the player has introduced a valid option or not
+        if(checkSelection(playerSelection)){
+
+            // A round of the game is played and the player/computer scores are modified according to the winner of the game
+            let winner = playRound(playerSelection, computerPlay());
+            if(winner === "player") {
+                playerScore++;
+            }
+            else if (winner === "computer") {
+                computerScore++;
+            }
+            else {
+                playerScore++;
+                computerScore++;
+            }
+        }
+        // If the player has not introduced a valid option an error message is printed
+        else {
+            console.log("Invalid option");
+        }
+    }
+
+    // When the game finishes the winner is printed
+    printWinner(playerScore, computerScore);
+}
