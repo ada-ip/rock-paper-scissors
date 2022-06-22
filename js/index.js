@@ -63,3 +63,16 @@ function playRound(playerSelection, computerSelection) {
     }
     return roundWinner;
 }
+
+// This function prints the winner of the game according to the scores of both the player and the computer
+function printWinner(playerScore, computerScore) {
+    if (playerScore > computerScore) {
+        console.log(`The score is... ${playerScore} to ${computerScore}! You win!!!`);
+    }
+    else if (playerScore < computerScore) {
+        console.log(`The score is... ${playerScore} to ${computerScore}! You lose :(`);
+    }
+    else {
+        console.log(`The score is... ${playerScore} to ${computerScore}! It's a tie!`);
+    }
+}
