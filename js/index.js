@@ -42,26 +42,24 @@ function isEmpty(string) {
 
 // This function allows the player to play one round of the game against the computer
 function playRound(playerSelection, computerSelection) {
-    let roundOutcome;
-    // It is checked if the player has introduced a valid option
-    if(checkSelection(playerSelection)){
-        // The player's selection is capitalized so it can be compared to the computer's selection because the player's selections needs to be case insensitive
-        let playerSelectionCapitalized = capitalizeSelection(playerSelection);
-        
-        // It is checked if the player has won, tied or lost against the computer
-        if(playerSelectionCapitalized === computerSelection){
-            roundOutcome = `It's a tie! You both have chosen ${computerSelection}`;
-        }
-        else if (playerSelectionCapitalized === "Rock" && computerSelection === "Scissors" || playerSelectionCapitalized === "Paper" && computerSelection === "Rock" || 
-        playerSelectionCapitalized === "Scissors" && computerSelection === "Paper") {
-            roundOutcome = `You win! ${playerSelectionCapitalized} beats ${computerSelection}`;
-        }
-        else {
-            roundOutcome = `You lose! ${computerSelection} beats ${playerSelectionCapitalized}`;
-        }
+    let roundWinner;
+
+    // The player's selection is capitalized so it can be compared to the computer's selection because the player's selections needs to be case insensitive
+    let playerSelectionCapitalized = capitalizeSelection(playerSelection);
+
+    // It is checked if the player has won, tied or lost against the computer
+    if(playerSelectionCapitalized === computerSelection){
+        console.log(`It's a tie! You both have chosen ${computerSelection}`);
+        roundWinner = "tie";
+    }
+    else if (playerSelectionCapitalized === "Rock" && computerSelection === "Scissors" || playerSelectionCapitalized === "Paper" && computerSelection === "Rock" || 
+    playerSelectionCapitalized === "Scissors" && computerSelection === "Paper") {
+        console.log(`You win! ${playerSelectionCapitalized} beats ${computerSelection}`);
+        roundWinner = "player";
     }
     else {
-        roundOutcome = "Invalid selection";
+        console.log(`You lose! ${computerSelection} beats ${playerSelectionCapitalized}`);
+        roundWinner = "computer";
     }
-    return roundOutcome;
+    return roundWinner;
 }
