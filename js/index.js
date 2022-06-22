@@ -16,7 +16,7 @@ function computerPlay(){
 // This function capitalizes a player's selection
 function capitalizeSelection(selection) {
     let selectionCapitalized = selection.charAt(0).toUpperCase();
-    for (i = 1; i < selection.length; i++) {
+    for (let i = 1; i < selection.length; i++) {
         selectionCapitalized += selection.charAt(i).toLowerCase();
     }
     return selectionCapitalized;
@@ -84,7 +84,7 @@ function game(){
     let computerScore = 0;
 
     // The game lasts five rounds
-    for(i = 0; i < 5; i++) {
+    for(let i = 0; i < 5; i++) {
         let playerSelection = prompt("What do you want to play? (Rock, paper, scissors):");
 
         // It is checked if the player has introduced a valid option or not
