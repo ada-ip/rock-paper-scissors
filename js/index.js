@@ -85,27 +85,28 @@ function game(){
 
     // The game lasts five rounds
     for(let i = 0; i < 5; i++) {
-        let playerSelection = prompt("What do you want to play? (Rock, paper, scissors):");
-
-        // It is checked if the player has introduced a valid option or not
-        if(checkSelection(playerSelection)){
-
-            // A round of the game is played and the player/computer scores are modified according to the winner of the game
-            let winner = playRound(playerSelection, computerPlay());
-            if(winner === "player") {
-                playerScore++;
-            }
-            else if (winner === "computer") {
-                computerScore++;
-            }
-            else {
-                playerScore++;
-                computerScore++;
+        // The player is asked for their choice until they introduce a valid option
+        let playerSelection;
+        do {
+            playerSelection = prompt("What do you want to play? (Rock, paper, scissors):");
+            // If the player does not introduce a valid option an error message is printed
+            if (!checkSelection(playerSelection)){
+                console.log("Invalid option");
             }
         }
-        // If the player has not introduced a valid option an error message is printed
+        while(!checkSelection(playerSelection))
+
+        // A round of the game is played and the player/computer scores are modified according to the winner of the game
+        let winner = playRound(playerSelection, computerPlay());
+        if(winner === "player") {
+            playerScore++;
+        }
+        else if (winner === "computer") {
+            computerScore++;
+        }
         else {
-            console.log("Invalid option");
+            playerScore++;
+            computerScore++;
         }
     }
 
